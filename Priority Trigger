@@ -1,0 +1,10 @@
+//PRIORITY TRIGGER 
+trigger priorityTrigger on Task__c (before insert) {
+if (Trigger.isInsert && Trigger.isBefore) {
+for ( Task__c taskRecord :Trigger.NEW) {
+System.debug('Found Trigger Record');
+taskRecord.Priority__c = 'High';
+}
+} 
+}
+//When we create a new task then the priority will always be high for every new task record. 
